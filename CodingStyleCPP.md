@@ -15,7 +15,7 @@ Tous les changement sont en **gras**
 **- Donc pas d'alignement des accolades ouvrantes et fermantes.**
 
 ```cpp
-if (age >= 18){
+if (age >= 18) {
     afficherMessage("Majeur", age);
 }
 ```
