@@ -1,5 +1,7 @@
-#include "State.h"
-#include "Entity.h"
+#include "../../States/State.h"
+#include "../Entity.h"
+#include "../../Map/Map.h"
+
 
 class Player: public Entity {
 private:
@@ -7,18 +9,18 @@ private:
     int tempMap[22][22];
 
     bool canMove(Vector2 position, int map[22][22]) {
-    if (map[position.x][position.y] == basicGround) {
+    if (map[position.x][position.y] == ground) {
         return true;
     } else {
         return false;
     }}
 
     char verifyInput() {
-        char c = _getch();
-        if (c == 'z' || c == 'q' || c == 's' || c == 'd' || c == 'a') {
-            return c;
-        }
-        return NULL;
+        //char c = _getch();
+        //if (c == 'z' || c == 'q' || c == 's' || c == 'd' || c == 'a') {
+            //return c;
+        //}
+        return ' ';
     }
 
     Vector2 playerInput(bool* isAttacking) {
