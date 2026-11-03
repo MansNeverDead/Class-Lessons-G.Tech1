@@ -1,16 +1,5 @@
 #pragma once
 
-#include <algorithm>
-#include <cstdlib>
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdint.h>
-#include <ncurses.h>
-#include <string>
-#include <fstream>
-#include <math.h> 
-#include <vector>
-
 #include "../Utilities/Vector2.h"
 
 using namespace std;

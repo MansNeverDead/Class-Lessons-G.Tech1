@@ -28,7 +28,7 @@ void Game::Game_Loop(){
 
 void Game::Update(){
     for (int i = 0; i < entityList.size(); i++) {
-        entityList[i] -> Update();
+        entityList[i]->Update();
     }
 }
 
@@ -36,7 +36,7 @@ void Game::Draw(){
     map.Draw_Map();
 
     for (int i = 0; i < entityList.size(); i++) {
-        entityList[i] -> Draw();
+        entityList[i]->Draw();
     }
 }
 

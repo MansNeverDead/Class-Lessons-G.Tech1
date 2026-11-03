@@ -14,7 +14,7 @@ class Entity {
 protected:
 	int damage;
 	bool isAttacking;
-	string display;
+	char display;
 	Vector2 position;
 	StateMachine currentState;
 	int HP;
@@ -22,6 +22,8 @@ public:
 	virtual void runState() = 0;
 	virtual void mouvement() = 0;
 	virtual void transition(State newState) = 0;
+	virtual void Draw() = 0;
+	virtual void Update() = 0;
 
 	int getHP() {
 		return HP;
