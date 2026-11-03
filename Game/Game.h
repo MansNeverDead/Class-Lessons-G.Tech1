@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "../Utilities/Vector2.h"
+#include "../Entities/Entity.h"
 #include "../Map/Map.h"
 
 using namespace std;
@@ -20,7 +21,13 @@ private:
 
     void Draw();
 
+    void Init();
+
+    void Menu(string big_display, string instruction);
+
     Map map;
+
+    vector<Entity*> entityList;
 
 public:
     static Game& getInstance();
@@ -32,4 +39,6 @@ public:
     void change_map(Map new_map);
     
     Map get_map();
+    
+    vector<Entity> get_entities();
 };

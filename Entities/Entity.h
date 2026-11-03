@@ -1,14 +1,20 @@
-#include "Vector2.h"
-#include "State.h"
+#include <iostream>
+
+#include "../Utilities/Vector2.h"
+
+using namespace std;
 
 class Entity {
 protected:
 	int damage;
 	string display;
 	Vector2 position;
-	State currentstate;
 private:
 	int HP;
 public:
 	virtual void runState() = 0;
+	
+    void Update();
+
+    void Draw();
 };
