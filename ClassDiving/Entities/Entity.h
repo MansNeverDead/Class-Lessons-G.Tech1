@@ -12,12 +12,29 @@ enum StateMachine {
 
 class Entity {
 protected:
-	int damage;
+	int attack;
 	bool isAttacking;
 	char display;
 	Vector2 position;
 	StateMachine currentState;
 	int HP;
+
+	void changePosition(Vector2 newPosition) {
+		position = newPosition;
+	}
+
+	void changeDamage(int value) {
+		attack = value;
+	}
+
+	void changeState(StateMachine newState) {
+		currentState = newState;
+	}
+
+	void changeHP(int value) {
+		HP = value;
+	}
+	
 public:
 	virtual void runState() = 0;
 	virtual void mouvement() = 0;
@@ -29,27 +46,11 @@ public:
 		return HP;
 	}
 
-	void changeHP(int value) {
-		HP = value;
-	}
-
-	void changePosition(Vector2 newPosition) {
-		position = newPosition;
-	}
-
-	void changeState(StateMachine newState) {
-		currentState = newState;
-	}
-
-	bool* isAttackingPtr() {
+	bool* getAttackingPtr() {
         return &isAttacking;
     };
 	
 	int getDamage() {
-		return damage;
-	}
-
-	void changeDamage(int value) {
-		damage = value;
+		return attack;
 	}
 };
