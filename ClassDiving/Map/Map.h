@@ -1,5 +1,7 @@
 #pragma once
 
+#include <iostream>
+
 #include "../Utilities/Vector2.h"
 
 using namespace std;

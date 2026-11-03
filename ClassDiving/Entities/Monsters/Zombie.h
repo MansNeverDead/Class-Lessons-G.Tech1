@@ -1,5 +1,7 @@
-#include "Entity.h"
-#include "State.h"
+#pragma once
+
+#include "../Entity.h"
+#include "../../States/State.h"
 
 class Zombie: public Entity {
 private:
@@ -8,8 +10,4 @@ private:
     void mouvement() override {
 
     };
-
-public:
-    virtual void runState() = 0;
-	virtual void transition(State newState) = 0;
-}
+};
