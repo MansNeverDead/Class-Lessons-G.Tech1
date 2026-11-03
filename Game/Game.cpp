@@ -27,11 +27,17 @@ void Game::Game_Loop(){
 }
 
 void Game::Update(){
-    
+    for (int i = 0; i < entityList.size(); i++) {
+        entityList[i] -> Update();
+    }
 }
 
 void Game::Draw(){
+    map.Draw_Map();
 
+    for (int i = 0; i < entityList.size(); i++) {
+        entityList[i] -> Draw();
+    }
 }
 
 void Game::Menu(string big_display, string instruction){
@@ -48,4 +54,13 @@ void Game::change_map(Map new_map){
     
 Map Game::get_map(){
     return Game::getInstance().map;
+}
+
+    
+vector<Entity*> Game::get_entities(){
+    return entityList;
+}
+
+void remove_dead_entities(){
+
 }

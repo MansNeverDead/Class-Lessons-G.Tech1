@@ -40,5 +40,7 @@ public:
     
     Map get_map();
     
-    vector<Entity> get_entities();
+    vector<Entity*> get_entities();
+
+    void remove_dead_entities();
 };
