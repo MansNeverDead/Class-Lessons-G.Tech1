@@ -32,9 +32,18 @@ protected:
 		currentState = newState;
 	}
 
+	bool CheckTile(Vector2 pos);
+
+	bool TryToMove(Vector2 dir);
+
+	void changeHP(int value);
+
 	virtual Vector2 chooseDirection() = 0;
 
+    virtual bool CheckCollisions();
+
 public:
+
 	virtual void runState() = 0;
 	virtual void mouvement() = 0;
 	virtual void transition(int newState) = 0;
@@ -51,6 +60,10 @@ public:
     	};
 	}
 
+	void die();
+
+	void move();
+
 	int getHP() {
 		return HP;
 	}
@@ -62,6 +75,8 @@ public:
 	int getDamage() {
 		return attack;
 	};
+
+	Vector2 getPosition();
 
 	Entity(int hp, int damage, char displayValue, StateEnum startingState) : HP(hp), attack(damage), display(displayValue), currentState(startingState) {};
 	~Entity() = default;
