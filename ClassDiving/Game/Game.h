@@ -1,9 +1,7 @@
 #pragma once
 
-#include <iostream>
 #include <vector>
 
-#include "../Utilities/Vector2.h"
 #include "../Entities/Entity.h"
 #include "../Map/Map.h"
 
@@ -42,5 +40,5 @@ public:
     
     vector<Entity*> get_entities();
 
-    void remove_dead_entities();
+    void remove_entity(int id);
 };

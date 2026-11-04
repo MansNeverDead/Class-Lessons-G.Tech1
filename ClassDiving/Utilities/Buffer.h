@@ -1,10 +1,8 @@
 #pragma once
 
-#include <iostream>
 #include <vector>
 
 #include "Vector2.h"
-#include "../Game/Game.h"
 
 using namespace std;
 
@@ -24,4 +22,6 @@ public:
     void clear();
     
     void draw(char c, Vector2 coordinates);
+
+    void print();
 };

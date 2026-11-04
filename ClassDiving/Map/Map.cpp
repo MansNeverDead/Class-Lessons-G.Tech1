@@ -1,5 +1,10 @@
+#include <cmath>
+#include <fstream>
+
 #include "Map.h"
 #include "../Utilities/Buffer.h"
+
+using namespace std;
 
 
 Tile_type Map::get_tile(Vector2 pos){
