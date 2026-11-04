@@ -1,7 +1,11 @@
 #include "../Utilities/Vector2.h"
 #include "../States/State.h"
+#include "../Map/Map.h"
+#include <vector>
 
-enum StateMachine {
+using namespace std;
+
+enum StateEnum {
     moving = 0,
     attacking = 1,
     attacked = 2,
@@ -16,31 +20,37 @@ protected:
 	bool isAttacking;
 	char display;
 	Vector2 position;
-	StateMachine currentState;
+	vector<Tile_type> walkableTile;
+	StateEnum currentState;
 	int HP;
 
 	void changePosition(Vector2 newPosition) {
 		position = newPosition;
 	}
 
-	void changeDamage(int value) {
+	void changeAttackDamage(int value) {
 		attack = value;
 	}
 
-	void changeState(StateMachine newState) {
+	void changeState(StateEnum newState) {
 		currentState = newState;
 	}
 
-	void changeHP(int value) {
-		HP = value;
-	}
-	
 public:
 	virtual void runState() = 0;
 	virtual void mouvement() = 0;
-	virtual void transition(State newState) = 0;
-	virtual void Draw() = 0;
-	virtual void Update() = 0;
+	virtual void transition(int newState) = 0;
+	virtual void draw() = 0;
+	virtual void update() = 0;
+
+	void receiveDamage(int value) {
+		HP -= value;
+		if (HP <= 0) {
+			transition(dying);
+		} else {
+			transition(moving);
+    	};
+	}
 
 	int getHP() {
 		return HP;
@@ -52,5 +62,5 @@ public:
 	
 	int getDamage() {
 		return attack;
-	}
+	};
 };

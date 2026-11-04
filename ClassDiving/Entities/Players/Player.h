@@ -16,10 +16,10 @@ private:
     }}
 
     char verifyInput() {
-        //char c = _getch();
-        //if (c == 'z' || c == 'q' || c == 's' || c == 'd' || c == 'a') {
+        char c = _getch();
+        if (c == 'z' || c == 'q' || c == 's' || c == 'd' || c == 'a') {
             //return c;
-        //}
+        }
         return ' ';
     }
 
@@ -60,10 +60,6 @@ private:
         }
     };
 
-    void attacking(Entity& victim) {
-        victim.changeHP(damage);
-    };
-
     void runTime(Entity& victim) {
         if (!isAttacking) {
             mouvement();
@@ -78,4 +74,10 @@ public:
         mouvement();
     };
 
+
+    void update() override {};
+
+    void attacking(Entity& victim) {
+        victim.receiveDamage(attack);
+    };
 };
