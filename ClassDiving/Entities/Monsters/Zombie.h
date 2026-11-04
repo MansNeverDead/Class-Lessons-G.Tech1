@@ -10,4 +10,7 @@ private:
     void mouvement() override {
 
     };
+
+public:
+    Zombie(int hp, int attackValue, char displayValue, StateEnum startingState);
 };

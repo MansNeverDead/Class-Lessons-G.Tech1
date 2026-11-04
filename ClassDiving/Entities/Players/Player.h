@@ -23,37 +23,23 @@ private:
         return ' ';
     }
 
-    Vector2 playerInput(bool* isAttacking) {
+    Vector2 chooseDirection() override {
         Vector2 direction;
+        isAttacking = false;
         char input = verifyInput();
-        if (input == 'z') {
-            direction.x = -1;
-            *isAttacking = false;
-            return direction;
-        }
-        else if (input == 'q') {
-            direction.y = -1;
-            *isAttacking = false;
-            return direction;
-        }
-        else if (input == 's') {
-            direction.x = 1;
-            *isAttacking = false;
-            return direction;
-        }
-        else if (input == 'd') {
-            direction.y = 1;
-            *isAttacking = false;
-            return direction;
-        }
-        else if (input == 'a') {
-            *isAttacking = true;
+        switch (input) {
+            case 'z': direction.x = -1; break;
+            case 'q': direction.y = -1; break;
+            case 's': direction.x = 1;  break;
+            case 'd': direction.y = 1;  break;
+            case 'a': isAttacking = true; return;
+            default: return;
         }
         return direction;
     }
 
     void mouvement() override {
-        Vector2 tempMouvement = position + playerInput(&isAttacking);
+        Vector2 tempMouvement = position + chooseDirection();
 
         if (canMove(tempMouvement, tempMap)) {
             position = tempMouvement;
@@ -70,10 +56,12 @@ private:
     }
 
 public:
+    // this is when you initialise them at the start
+    Player(int hp, int attackValue, char displayValue, StateEnum startingState);
+
     void runState() override {
         mouvement();
     };
-
 
     void update() override {};
 

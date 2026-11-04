@@ -8,5 +8,5 @@ class Warrior: public Player {
 protected:
 
 public:
-    cout << "lol";
+    using Player::Player;
 }
