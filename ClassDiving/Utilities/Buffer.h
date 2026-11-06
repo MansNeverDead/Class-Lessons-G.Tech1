@@ -20,6 +20,8 @@ private:
 
 public:
     static Buffer& getInstance();
+    Buffer(const Buffer&) = delete;
+    Buffer& operator=(const Buffer&) = delete;
 
     void clear();
     

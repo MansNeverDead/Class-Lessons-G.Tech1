@@ -1,7 +1,12 @@
-#include "../Utilities/Vector2.h"
-#include "../States/State.h"
-#include "../Map/Map.h"
+#pragma once
 #include <vector>
+#include <random>
+#include "../Utilities/Vector2.h"
+#include "../Utilities/Buffer.h"
+#include "../Map/Map.h"
+#include "../Game/Game.h"
+
+
 
 using namespace std;
 
@@ -16,6 +21,7 @@ enum StateEnum {
 
 class Entity {
 protected:
+
 	const int attack;
 	bool isAttacking = false;
 	char display;
@@ -23,6 +29,7 @@ protected:
 	vector<Tile_type> walkableTile;
 	StateEnum currentState;
 	int HP;
+	int ID = rand();
 
 	void changePosition(Vector2 newPosition) {
 		position = newPosition;
@@ -32,33 +39,33 @@ protected:
 		currentState = newState;
 	}
 
-	bool CheckTile(Vector2 pos);
+	bool checkTile(Vector2 pos); // is in Entity.cpp
 
 	bool TryToMove(Vector2 dir);
 
-	void changeHP(int value);
-
 	virtual Vector2 chooseDirection() = 0;
 
-    virtual bool CheckCollisions();
+    virtual bool checkCollisions();
+
+	virtual void FSM() = 0;
 
 public:
 
-	virtual void runState() = 0;
-	virtual void mouvement() = 0;
-	virtual void transition(int newState) = 0;
-	virtual void draw() = 0;
+	void mouvement(Vector2 tempMouvement) {
+		tempMouvement = position + chooseDirection();
+        if (!checkTile(tempMouvement)) {
+            return;
+        }
+        changePosition(tempMouvement);
+	};
+
+	void draw() {
+        //Buffer::getInstance().draw(display, position);
+    };
+
 	virtual void update() = 0;
 	
-
-	void receiveDamage(int value) {
-		HP -= value;
-		if (HP <= 0) {
-			transition(dying);
-		} else {
-			transition(moving);
-    	};
-	}
+	void receiveDamage(int value); // Is defined in Entity.cpp
 
 	void die();
 
@@ -68,15 +75,9 @@ public:
 		return HP;
 	}
 
-	bool* getAttackingPtr() {
-        return &isAttacking;
-    };
-	
-	int getDamage() {
-		return attack;
+	Vector2 getPosition() {
+		return position;
 	};
-
-	Vector2 getPosition();
 
 	Entity(int hp, int damage, char displayValue, StateEnum startingState) : HP(hp), attack(damage), display(displayValue), currentState(startingState) {};
 	~Entity() = default;

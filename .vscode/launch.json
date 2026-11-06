@@ -5,7 +5,17 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
-            "args": [],
+            "args": [
+    "-fcolor-diagnostics",
+    "-fansi-escape-codes",
+    "-g",
+    "${workspaceFolder}\\ClassDiving.cpp",
+    "${workspaceFolder}\\Game\\Game.cpp",
+    "${workspaceFolder}\\Map\\Map.cpp",
+    "${workspaceFolder}\\Utilities\\Vector2.cpp",
+    "-o",
+    "${workspaceFolder}\\ClassDiving.exe"
+],
             "stopAtEntry": false,
             "cwd": "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\Llvm\\x64\\bin",
             "environment": [],

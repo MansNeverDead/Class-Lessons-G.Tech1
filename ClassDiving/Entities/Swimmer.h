@@ -1,5 +1,4 @@
 #include "Entity.h"
-#include "State.h"
 
 class Swimmer: public Entity {
     virtual void runState() = 0;

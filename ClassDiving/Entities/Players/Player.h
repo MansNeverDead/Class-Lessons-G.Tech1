@@ -1,24 +1,20 @@
-#include "../../States/State.h"
+#include <conio.h>
 #include "../Entity.h"
 #include "../../Map/Map.h"
 
 
 class Player: public Entity {
-private:
+protected:
     bool isAttacking = false;
     int tempMap[22][22];
 
-    bool canMove(Vector2 position, int map[22][22]) {
-    if (map[position.x][position.y] == ground) {
-        return true;
-    } else {
-        return false;
-    }}
+
+    virtual void attackingEnemies();
 
     char verifyInput() {
         char c = _getch();
         if (c == 'z' || c == 'q' || c == 's' || c == 'd' || c == 'a') {
-            //return c;
+            return c;
         }
         return ' ';
     }
@@ -38,34 +34,21 @@ private:
         return direction;
     }
 
-    void mouvement() override {
-        Vector2 tempMouvement = position + chooseDirection();
-
-        if (canMove(tempMouvement, tempMap)) {
-            position = tempMouvement;
+    void FSM() override {
+        if (isAttacking) {
+            attackingEnemies();
         }
-    };
-
-    void runTime(Entity& victim) {
-        if (!isAttacking) {
-            mouvement();
-        } 
-        else { 
-            attacking(victim);
-        };
+        else {
+            mouvement(chooseDirection());
+        }
     }
+
 
 public:
     // this is when you initialise them at the start
     Player(int hp, int attackValue, char displayValue, StateEnum startingState);
 
-    void runState() override {
-        mouvement();
-    };
-
-    void update() override {};
-
-    void attacking(Entity& victim) {
-        victim.receiveDamage(attack);
+    void update() override {
+        FSM();
     };
 };
