@@ -1,6 +1,5 @@
 #include "Entity.h"
 #include "Player.h"
-#include "State.h"
 
 using namespace std;
 
@@ -9,4 +8,4 @@ protected:
 
 public:
     using Player::Player;
-}
+};

@@ -1,8 +1,12 @@
+#include <iostream>
+
 #include "Game.h"
 
+using namespace std;
+
 Game& Game::getInstance() {
-    static Game obj;
-    return obj;
+    static Game instance;
+    return instance;
 }
 
 void Game::Game_Loop(){
@@ -28,7 +32,7 @@ void Game::Game_Loop(){
 
 void Game::Update(){
     for (int i = 0; i < entityList.size(); i++) {
-        entityList[i] -> update();
+        entityList[i]->update();
     }
 }
 
@@ -36,7 +40,7 @@ void Game::Draw(){
     map.Draw_Map();
 
     for (int i = 0; i < entityList.size(); i++) {
-        entityList[i] -> draw();
+        entityList[i]->draw();
     }
 }
 
@@ -56,12 +60,8 @@ Map Game::get_map(){
     return Game::getInstance().map;
 }
     
-vector<Entity*> Game::get_entities(){
+vector<Entity*> Game::getEntities(){
     return entityList;
-}
-
-vector<Player*> Game::get_players(){
-    return players;
 }
 
 void remove_dead_entities(){
