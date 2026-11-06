@@ -8,7 +8,7 @@ using namespace std;
 
 class Warrior: public Player {
 protected:
-    void attackingEnemies() override {
+    void CheckCollisions() override {
         for (int i = 0; i < Game::getInstance().getEntities().size(); i++) {
             Entity* monster = Game::getInstance().getEntities()[i];
             if (position == monster->getPosition()) {
@@ -17,13 +17,16 @@ protected:
         }
     };
 
-
+    void FSM() override {
+        mouvement();
+        CheckCollisions();
+    }
 
 public:
     using Player::Player;
 
     void update() {
-        attackingEnemies();
+        FSM();
     }
 
 };

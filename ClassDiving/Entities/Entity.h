@@ -1,7 +1,6 @@
 #pragma once
 
 #include "../Utilities/Vector2.h"
-#include "../States/State.h"
 #include "../Map/Map.h"
 #include <vector>
 
@@ -39,6 +38,7 @@ protected:
 
 	virtual bool CheckTile(Vector2 pos);
 
+	//This to check and hurt the enemy
     virtual void CheckCollisions();
 
 	virtual bool TryToMove(Vector2 dir);

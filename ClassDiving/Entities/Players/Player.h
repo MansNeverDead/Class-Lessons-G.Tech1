@@ -19,6 +19,7 @@ protected:
         return ' ';
     }
 
+    // Doesn't need any Input, and returns the direction put in by the user.
     Vector2 chooseDirection() override {
         Vector2 direction;
         isAttacking = false;
@@ -28,25 +29,29 @@ protected:
             case 'q': direction.y = -1; break;
             case 's': direction.x = 1;  break;
             case 'd': direction.y = 1;  break;
-            case 'a': isAttacking = true; return;
-            default: return;
+            case 'a': isAttacking = true;
+            default:;
         }
         return direction;
     }
 
-    void FSM() override {
-        if (isAttacking) {
-            attackingEnemies();
-        }
-        else {
-            mouvement(chooseDirection());
-        }
-    }
+    // Here is where it'll check if the Player should recieve damage, move or other.
+    virtual void FSM() = 0; 
+
 
 
 public:
     // this is when you initialise them at the start
     Player(int hp, int attackValue, char displayValue, StateEnum startingState);
+
+    void mouvement() override {
+        Vector2 tempMouvement = position + chooseDirection();
+        Map* e = new Map();
+        if (e->get_tile(tempMouvement) != 0) {
+            return;
+        }
+        position = tempMouvement;
+    }
 
     void update() override {
         FSM();

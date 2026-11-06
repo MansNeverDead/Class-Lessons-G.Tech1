@@ -8,6 +8,8 @@ using namespace std;
 Tile_type* Map::map = nullptr;
 Vector2 Map::Screen_Size{ 22, 22 };
 
+// returns a type thanks to the tileType Enum them being the following..
+//ground = 0, mountain = 1, water = 2, rock = 3
 Tile_type Map::get_tile(Vector2 pos){
     return map[coordinates_to_index(pos)];
 }

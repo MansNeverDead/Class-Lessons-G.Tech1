@@ -43,7 +43,7 @@ public:
     
     Map get_map();
     
-    vector<Entity*> get_entities();
+    vector<Entity*> getEntities();
 
     vector<Player*> get_players();
 
