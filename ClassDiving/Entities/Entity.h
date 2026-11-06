@@ -1,3 +1,5 @@
+#pragma once
+
 #include "../Utilities/Vector2.h"
 #include "../States/State.h"
 #include "../Map/Map.h"
@@ -16,13 +18,14 @@ enum StateEnum {
 
 class Entity {
 protected:
-	const int attack;
+	const int attack = 1;
 	bool isAttacking = false;
-	char display;
+	char display = ' ';
 	Vector2 position;
 	vector<Tile_type> walkableTile;
 	StateEnum currentState;
-	int HP;
+	int HP = 0;
+	const int ID = 0;
 
 	void changePosition(Vector2 newPosition) {
 		position = newPosition;
@@ -32,15 +35,15 @@ protected:
 		currentState = newState;
 	}
 
-	bool CheckTile(Vector2 pos);
+	virtual Vector2 chooseDirection();
 
-	bool TryToMove(Vector2 dir);
+	virtual bool CheckTile(Vector2 pos);
+
+    virtual void CheckCollisions();
+
+	virtual bool TryToMove(Vector2 dir);
 
 	void changeHP(int value);
-
-	virtual Vector2 chooseDirection() = 0;
-
-    virtual bool CheckCollisions();
 
 public:
 
@@ -60,24 +63,25 @@ public:
     	};
 	}
 
-	void die();
+	virtual void die();
 
-	void move();
+	virtual void move();
 
 	int getHP() {
 		return HP;
+	}
+
+	int getID() {
+		return ID;
 	}
 
 	bool* getAttackingPtr() {
         return &isAttacking;
     };
 	
-	int getDamage() {
+	int getAttack() {
 		return attack;
 	};
 
 	Vector2 getPosition();
-
-	Entity(int hp, int damage, char displayValue, StateEnum startingState) : HP(hp), attack(damage), display(displayValue), currentState(startingState) {};
-	~Entity() = default;
 };

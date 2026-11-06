@@ -5,6 +5,7 @@
 
 #include "../Utilities/Vector2.h"
 #include "../Entities/Entity.h"
+#include "../Entities/Players/Player.h"
 #include "../Map/Map.h"
 
 using namespace std;
@@ -29,6 +30,8 @@ private:
 
     vector<Entity*> entityList;
 
+    vector<Player*> players;
+
 public:
     static Game& getInstance();
 
@@ -41,6 +44,8 @@ public:
     Map get_map();
     
     vector<Entity*> get_entities();
+
+    vector<Player*> get_players();
 
     void remove_dead_entities();
 };
