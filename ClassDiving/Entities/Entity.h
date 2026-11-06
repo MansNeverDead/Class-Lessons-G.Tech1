@@ -1,71 +1,85 @@
 #pragma once
 
 #include "../Utilities/Vector2.h"
-#include "../States/State.h"
 #include "../Map/Map.h"
+#include "../Utilities/Buffer.h"
+#include "../Game/Game.h"
 #include <vector>
 
 using namespace std;
 
-enum StateEnum {
-    moving = 0,
-    attacking = 1,
-    attacked = 2,
-    damaged = 3,
-    dying = 4,
-	swimming
-};
-
 class Entity {
 protected:
 	const int attack = 1;
-	bool isAttacking = false;
+
 	char display = ' ';
+
 	Vector2 position;
+
 	vector<Tile_type> walkableTile;
-	StateEnum currentState;
+
 	int HP = 0;
+
 	const int ID = 0;
 
 	void changePosition(Vector2 newPosition) {
 		position = newPosition;
 	}
 
-	void changeState(StateEnum newState) {
-		currentState = newState;
-	}
-
 	virtual Vector2 chooseDirection();
 
-	virtual bool CheckTile(Vector2 pos);
+	bool CheckTile(Vector2 pos){
+		Tile_type tile = Game::getInstance().get_map().get_tile(pos);
+		for (int i = 0; i < walkableTile.size(); i++) {
+			if (walkableTile[i] == tile){
+				return true;
+			}
+		}
+		return false;
+	}
 
     virtual void CheckCollisions();
 
-	virtual bool TryToMove(Vector2 dir);
+	bool TryToMove(Vector2 dir){
+		Vector2 new_pos = position + dir;
 
-	void changeHP(int value);
+		if (CheckTile(new_pos)){
+			position = new_pos;
+			return true;
+		}
+
+		return false;
+	}
+
+	void changeHP(int value){
+		if (value <= 0) {
+			die();
+		} else {
+			HP = value;
+    	};
+	}
 
 public:
 
-	virtual void runState() = 0;
-	virtual void mouvement() = 0;
-	virtual void transition(int newState) = 0;
-	virtual void draw() = 0;
-	virtual void update() = 0;
-	
+	void draw(){
+		Buffer::getInstance().draw(display, position);
+	}
+
+	virtual void update(){
+		move();
+	}
 
 	void receiveDamage(int value) {
-		HP -= value;
-		if (HP <= 0) {
-			transition(dying);
-		} else {
-			transition(moving);
-    	};
+		if (value <= 0){
+			changeHP(HP - value);
+		}
 	}
 
 	virtual void die();
 
-	virtual void move();
+	void move(){
+		while (!TryToMove(chooseDirection()));
+	}
 
 	int getHP() {
 		return HP;
@@ -74,10 +88,6 @@ public:
 	int getID() {
 		return ID;
 	}
-
-	bool* getAttackingPtr() {
-        return &isAttacking;
-    };
 	
 	int getAttack() {
 		return attack;
