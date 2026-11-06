@@ -1,7 +1,10 @@
-#include <fstream>
 #include <string>
+#include <math.h>
+#include <vector>
+
 #include "Map.h"
 #include "../Utilities/Buffer.h"
+#include "../Utilities/Parser.h"
 
 using namespace std;
 
@@ -17,39 +20,8 @@ int Map::coordinates_to_index(Vector2 coordinates){
 }
 
 void Map::Load_Map(string file_path){
-
-    ifstream inputFile(file_path);
-
-    string line;
-
-    int y = 0;
-
-    Tile_type tile;
-
-    while (getline(inputFile, line) && y < Screen_Size.y) {
-        for (int i = 0; i < Screen_Size.x; i++) {
-            switch (line[i]) {
-                case 'A':
-                    tile = mountain;
-                    break;
-                case '~':
-                    tile = water;
-                    break;
-                case 'R':
-                    tile = rock;
-                    break;
-                default :
-                    tile = ground;
-                    break;
-            }
-
-            map[i + y * Screen_Size.x] = tile;
-            
-        }
-        y += 1;
-    }
-
-    inputFile.close();
+    vector<Tile_type> newMap = Parser::Load_Map(file_path, Screen_Size);
+    copy( newMap.begin(), newMap.end(), map); ;
 }
 
 void Map::Draw_Map(){
@@ -80,4 +52,20 @@ void Map::Draw_Map(){
 
         Buffer::getInstance().draw(character, coordinates);
     }
+}
+
+Vector2 Map::get_Screen_Size(){
+    return Screen_Size;
+}
+
+Vector2 Map::get_Pixel_Size(){
+    return Pixel_Size;
+}
+
+void Map::set_Screen_Size(){
+
+}
+
+void Map::set_Pixel_Size(){
+    
 }

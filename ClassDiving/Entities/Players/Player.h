@@ -1,4 +1,5 @@
-#include <conio.h>
+#pragma once
+
 #include "../Entity.h"
 #include "../../Map/Map.h"
 
@@ -12,7 +13,7 @@ protected:
     virtual void attackingEnemies();
 
     char verifyInput() {
-        char c = _getch();
+        char c = ' ';
         if (c == 'z' || c == 'q' || c == 's' || c == 'd' || c == 'a') {
             return c;
         }
@@ -28,27 +29,8 @@ protected:
             case 'q': direction.y = -1; break;
             case 's': direction.x = 1;  break;
             case 'd': direction.y = 1;  break;
-            case 'a': isAttacking = true; return;
-            default: return;
+            case 'a': isAttacking = true;
         }
         return direction;
     }
-
-    void FSM() override {
-        if (isAttacking) {
-            attackingEnemies();
-        }
-        else {
-            mouvement(chooseDirection());
-        }
-    }
-
-
-public:
-    // this is when you initialise them at the start
-    Player(int hp, int attackValue, char displayValue, StateEnum startingState);
-
-    void update() override {
-        FSM();
-    };
 };

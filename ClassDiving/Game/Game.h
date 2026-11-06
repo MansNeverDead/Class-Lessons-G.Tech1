@@ -46,6 +46,4 @@ public:
     vector<Entity*> get_entities();
 
     vector<Player*> get_players();
-
-    void remove_dead_entities();
 };
