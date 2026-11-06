@@ -4,7 +4,6 @@
 #include <vector>
 
 #include "Vector2.h"
-#include "../Game/Game.h"
 
 using namespace std;
 

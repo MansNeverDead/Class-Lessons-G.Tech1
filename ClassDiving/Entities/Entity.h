@@ -22,76 +22,35 @@ protected:
 
 	const int ID = 0;
 
-	void changePosition(Vector2 newPosition) {
-		position = newPosition;
-	}
+	void changePosition(Vector2 newPosition);
 
 	virtual Vector2 chooseDirection();
 
-	bool CheckTile(Vector2 pos){
-		Tile_type tile = Game::getInstance().get_map().get_tile(pos);
-		for (int i = 0; i < walkableTile.size(); i++) {
-			if (walkableTile[i] == tile){
-				return true;
-			}
-		}
-		return false;
-	}
+	bool CheckTile(Vector2 pos);
 
     virtual void CheckCollisions();
 
-	bool TryToMove(Vector2 dir){
-		Vector2 new_pos = position + dir;
+	bool TryToMove(Vector2 dir);
 
-		if (CheckTile(new_pos)){
-			position = new_pos;
-			return true;
-		}
-
-		return false;
-	}
-
-	void changeHP(int value){
-		if (value <= 0) {
-			die();
-		} else {
-			HP = value;
-    	};
-	}
+	void changeHP(int value);
 
 public:
 
-	void draw(){
-		Buffer::getInstance().draw(display, position);
-	}
+	void draw();
 
-	virtual void update(){
-		move();
-	}
+	virtual void update();
 
-	void receiveDamage(int value) {
-		if (value <= 0){
-			changeHP(HP - value);
-		}
-	}
+	void receiveDamage(int value);
 
 	virtual void die();
 
-	void move(){
-		while (!TryToMove(chooseDirection()));
-	}
+	void move();
 
-	int getHP() {
-		return HP;
-	}
+	int getHP();
 
-	int getID() {
-		return ID;
-	}
+	int getID();
 	
-	int getAttack() {
-		return attack;
-	};
-
+	int getAttack();
+	
 	Vector2 getPosition();
 };

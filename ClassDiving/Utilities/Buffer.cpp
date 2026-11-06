@@ -1,4 +1,5 @@
 #include "Buffer.h"
+#include "../Game/Game.h"
 
 Buffer& Buffer::getInstance(){
     static Buffer obj;
