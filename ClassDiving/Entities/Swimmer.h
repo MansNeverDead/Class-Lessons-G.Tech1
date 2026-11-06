@@ -1,10 +1,10 @@
-#include "Entity.h"
-#include "State.h"
+#pragma once
 
-class Swimmer: public Entity {
-    virtual void runState() = 0;
-	virtual void mouvement() = 0;
-	virtual void transition(int newState) = 0;
-	virtual void draw() = 0;
-	virtual void update() = 0;
-}
+#include <vector>
+
+#include "../Map/Map.h"
+
+class Swimmer{
+public:
+    vector<Tile_type> get_walkable_tiles();
+};

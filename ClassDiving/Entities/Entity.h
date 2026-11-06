@@ -1,83 +1,97 @@
+#pragma once
+
 #include "../Utilities/Vector2.h"
-#include "../States/State.h"
 #include "../Map/Map.h"
+#include "../Utilities/Buffer.h"
+#include "../Game/Game.h"
 #include <vector>
 
 using namespace std;
 
-enum StateEnum {
-    moving = 0,
-    attacking = 1,
-    attacked = 2,
-    damaged = 3,
-    dying = 4,
-	swimming
-};
-
 class Entity {
 protected:
-	const int attack;
-	bool isAttacking = false;
-	char display;
+	const int attack = 1;
+
+	char display = ' ';
+
 	Vector2 position;
+
 	vector<Tile_type> walkableTile;
-	StateEnum currentState;
-	int HP;
+
+	int HP = 0;
+
+	const int ID = 0;
 
 	void changePosition(Vector2 newPosition) {
 		position = newPosition;
 	}
 
-	void changeState(StateEnum newState) {
-		currentState = newState;
+	virtual Vector2 chooseDirection();
+
+	bool CheckTile(Vector2 pos){
+		Tile_type tile = Game::getInstance().get_map().get_tile(pos);
+		for (int i = 0; i < walkableTile.size(); i++) {
+			if (walkableTile[i] == tile){
+				return true;
+			}
+		}
+		return false;
 	}
 
-	bool CheckTile(Vector2 pos);
+    virtual void CheckCollisions();
 
-	bool TryToMove(Vector2 dir);
+	bool TryToMove(Vector2 dir){
+		Vector2 new_pos = position + dir;
 
-	void changeHP(int value);
+		if (CheckTile(new_pos)){
+			position = new_pos;
+			return true;
+		}
 
-	virtual Vector2 chooseDirection() = 0;
+		return false;
+	}
 
-    virtual bool CheckCollisions();
-
-public:
-
-	virtual void runState() = 0;
-	virtual void mouvement() = 0;
-	virtual void transition(int newState) = 0;
-	virtual void draw() = 0;
-	virtual void update() = 0;
-	
-
-	void receiveDamage(int value) {
-		HP -= value;
-		if (HP <= 0) {
-			transition(dying);
+	void changeHP(int value){
+		if (value <= 0) {
+			die();
 		} else {
-			transition(moving);
+			HP = value;
     	};
 	}
 
-	void die();
+public:
 
-	void move();
+	void draw(){
+		Buffer::getInstance().draw(display, position);
+	}
+
+	virtual void update(){
+		move();
+	}
+
+	void receiveDamage(int value) {
+		if (value <= 0){
+			changeHP(HP - value);
+		}
+	}
+
+	virtual void die();
+
+	void move(){
+		while (!TryToMove(chooseDirection()));
+	}
 
 	int getHP() {
 		return HP;
 	}
 
-	bool* getAttackingPtr() {
-        return &isAttacking;
-    };
+	int getID() {
+		return ID;
+	}
 	
-	int getDamage() {
+	int getAttack() {
 		return attack;
 	};
 
 	Vector2 getPosition();
-
-	Entity(int hp, int damage, char displayValue, StateEnum startingState) : HP(hp), attack(damage), display(displayValue), currentState(startingState) {};
-	~Entity() = default;
 };

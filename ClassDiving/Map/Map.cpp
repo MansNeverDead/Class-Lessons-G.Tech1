@@ -1,11 +1,12 @@
-#include <cmath>
 #include <fstream>
-
+#include <string>
 #include "Map.h"
 #include "../Utilities/Buffer.h"
 
 using namespace std;
 
+Tile_type* Map::map = nullptr;
+Vector2 Map::Screen_Size{ 22, 22 };
 
 Tile_type Map::get_tile(Vector2 pos){
     return map[coordinates_to_index(pos)];
