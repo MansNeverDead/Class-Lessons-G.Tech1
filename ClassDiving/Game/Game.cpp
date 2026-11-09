@@ -80,7 +80,7 @@ void Game::Init(){
 
     map.setPixelSize({2, 2});
 
-    map.loadMap("Level1");
+    map.loadMap("Level1.txt");
 }
 
 void Game::changeMap(Map new_map){
