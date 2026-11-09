@@ -23,6 +23,16 @@ protected:
 
     };
 
+    void mouvement() {
+        Vector2 tempMouvement = position + chooseDirection();
+        Map* e = new Map();
+        if (!tryToMove(chooseDirection())) {
+            return;
+        } else {
+            position = tempMouvement;
+        }
+    }
+    
     void FSM() override {
         if (isAttacking) {
             CheckCollisions();

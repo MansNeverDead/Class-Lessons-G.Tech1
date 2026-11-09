@@ -26,7 +26,7 @@ protected:
 		position = newPosition;
 	}
 
-	virtual Vector2 chooseDirection();
+	virtual Vector2 chooseDirection() = 0;
 
 	bool CheckTile(Vector2 pos){
 		Tile_type tile = Game::getInstance().get_map().get_tile(pos);
@@ -41,7 +41,7 @@ protected:
 	//This to check and hurt the enemy
     virtual void CheckCollisions();
 
-	bool TryToMove(Vector2 dir){
+	bool tryToMove(Vector2 dir){
 		Vector2 new_pos = position + dir;
 
 		if (CheckTile(new_pos)){
@@ -79,7 +79,7 @@ public:
 	virtual void die();
 
 	void move(){
-		while (!TryToMove(chooseDirection()));
+		while (!tryToMove(chooseDirection()));
 	}
 
 	int getHP() {

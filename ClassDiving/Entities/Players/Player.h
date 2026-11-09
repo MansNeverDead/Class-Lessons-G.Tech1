@@ -38,21 +38,22 @@ protected:
     // Here is where it'll check if the Player should recieve damage, move or other.
     virtual void FSM() = 0; 
 
-
+    void die() override {
+        system("cls");
+        cout << "..   ..   .....   ..   ..      ......   .......  .......  ......" << endl;
+        cout << "..   ..  ..   ..  ..   ..      ..   ..    ...    ..       ..   .." << endl;
+        cout << " .. ..   ..   ..  ..   ..      ..   ..    ...    ..       ..   .." << endl;
+        cout << "  ...    ..   ..  ..   ..      ..   ..    ...    ......   ..   .." << endl;
+        cout << "  ...    ..   ..  ..   ..      ..   ..    ...    ..       ..   .." << endl;
+        cout << "  ...    ..   ..  ..   ..      ..   ..    ...    ..       ..   .." << endl;
+        cout << "  ...     .....    .....       ......   .......  .......  ......" << endl;
+        exit(0);
+    }
 
 public:
     // this is when you initialise them at the start
-    Player(int hp, int attackValue, char displayValue, StateEnum startingState);
-
-    void mouvement() override {
-        Vector2 tempMouvement = position + chooseDirection();
-        Map* e = new Map();
-        if (e->get_tile(tempMouvement) != 0) {
-            return;
-        }
-        position = tempMouvement;
-    }
-
+    Player(int hp, int attackValue, char displayValue);
+    
     void update() override {
         FSM();
     };
