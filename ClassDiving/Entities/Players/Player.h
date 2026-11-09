@@ -1,8 +1,11 @@
 #pragma once
-#include <conio.h>
+
+//#include <conio.h>
+#include <iostream>
 #include "../Entity.h"
 #include "../../Map/Map.h"
 
+using namespace std;
 
 class Player: public Entity {
 protected:
@@ -13,7 +16,9 @@ protected:
     virtual void attackingEnemies();
 
     char verifyInput() {
-        char c = _getch();
+        //char c = _getch();
+        char c;
+        cin >> c;
         if (c == 'z' || c == 'q' || c == 's' || c == 'd' || c == 'a') {
             return c;
         }

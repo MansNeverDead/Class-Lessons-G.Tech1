@@ -6,5 +6,7 @@
 #include "Warrior.h"
 #include "../../Game/Game.h"
 
-class Paladin: public Mage, public Warrior {    
+class Paladin: public Mage, public Warrior {   
+    public:
+    Paladin();
 };

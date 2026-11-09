@@ -3,8 +3,6 @@
 #include <vector>
 #include "../Utilities/Vector2.h"
 #include "../Map/Map.h"
-#include "../Utilities/Buffer.h"
-#include "../Game/Game.h"
 
 using namespace std;
 

@@ -16,7 +16,7 @@ void Enemie::die() {
 }
 
 void Enemie::CheckCollisions(){
-    vector<Player*> players = Game::getInstance().get_players();
+    vector<Player*> players = Game::getInstance().getPlayers();
     for (int i = 0; i < players.size(); i++){
         if (players[i] -> getPosition() == position){
             players[i] -> receiveDamage(attack);

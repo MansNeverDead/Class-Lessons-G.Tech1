@@ -6,7 +6,6 @@
 #include "../Utilities/Vector2.h"
 #include "../Entities/Entity.h"
 #include "../Entities/Players/Player.h"
-#include "../Map/Map.h"
 
 using namespace std;
 

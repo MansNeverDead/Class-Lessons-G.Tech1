@@ -1,8 +1,9 @@
 #include <string>
+#include <termios.h>
 
 #include "Game.h"
-#include "../Entities/Players/Warrior.h"
 #include "../Utilities/Buffer.h"
+#include "../Entities/Players/Palandin.h"
 
 Game& Game::getInstance() {
     static Game obj;
@@ -64,13 +65,13 @@ void Game::Menu(string big_display, string instruction){
 }
 
 void Game::Init(){
-    players[0] = new Warrior(1, 1, 'W');
+    players[0] = new Paladin;
 
     map = *new Map;
 
-    map.set_Screen_Size({22, 22});
+    map.setScreenSize({22, 22});
 
-    map.set_Pixel_Size({2, 2});
+    map.setPixelSize({2, 2});
 
     map.loadMap("Level1");
 }

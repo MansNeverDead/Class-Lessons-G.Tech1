@@ -7,6 +7,7 @@
 #include "../Entities/Monsters/Zombie.h"
 #include "../Entities/Monsters/Headless.h"
 #include "../Entities/Monsters/Swimmer_Zombie.h"
+#include "../Game/Game.h"
 
 vector<Tile_type> Parser::loadMap(string file_path, Vector2 Screen_Size){
 
