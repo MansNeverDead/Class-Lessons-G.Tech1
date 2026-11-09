@@ -56,18 +56,18 @@ void Map::drawMap(){
     }
 }
 
-Vector2 Map::get_Screen_Size(){
+Vector2 Map::getScreenSize(){
     return Screen_Size;
 }
 
-Vector2 Map::get_Pixel_Size(){
+Vector2 Map::getPixelSize(){
     return Pixel_Size;
 }
 
-void Map::set_Screen_Size(Vector2 value){
+void Map::setScreenSize(Vector2 value){
     Screen_Size = value;
 }
 
-void Map::set_Pixel_Size(Vector2 value){
+void Map::setPixelSize(Vector2 value){
     Pixel_Size = value;
 }

@@ -69,7 +69,7 @@ vector<Entity*> Parser::Load_Entity(Vector2 level_pos){
 
             headless -> setPos(newPos);
 
-            Game::getInstance().get_entities().push_back(headless);
+            Game::getInstance().getEntities().push_back(headless);
         }
 
         else if (type == "Zombie"){
@@ -81,7 +81,7 @@ vector<Entity*> Parser::Load_Entity(Vector2 level_pos){
 
             zombie -> setPos(newPos);
 
-            Game::getInstance().get_entities().push_back(zombie);
+            Game::getInstance().getEntities().push_back(zombie);
         }
 
         else if (type == "Swimmer"){
@@ -93,7 +93,7 @@ vector<Entity*> Parser::Load_Entity(Vector2 level_pos){
 
             swimmer -> setPos(newPos);
 
-            Game::getInstance().get_entities().push_back(swimmer);
+            Game::getInstance().getEntities().push_back(swimmer);
         }
     }
 

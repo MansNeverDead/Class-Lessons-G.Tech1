@@ -1,6 +1,8 @@
-#include "Entity.h"
+#pragma once
+
+#include "../Entity.h"
 #include "Player.h"
-#include "Game.h"
+#include "../../Game/Game.h"
 
 using namespace std;
 
@@ -20,7 +22,6 @@ protected:
                 }
             }
         }
-
     };
 
     void mouvement() {

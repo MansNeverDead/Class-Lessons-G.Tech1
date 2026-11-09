@@ -19,18 +19,18 @@ private:
 public:
     Tile_type getTile(Vector2 pos);
 
-    int coordinates_to_index(Vector2 coordinates);
+    int coordinatesToIndex(Vector2 coordinates);
 
-    void Load_Map(string file_path);
+    void loadMap(string file_path);
 
-    void Draw_Map();
+    void drawMap();
 
-    Vector2 get_Screen_Size();
+    Vector2 getScreenSize();
 
-    Vector2 get_Pixel_Size();
+    Vector2 getPixelSize();
 
-    void set_Screen_Size(Vector2);
+    void setScreenSize(Vector2);
 
-    void set_Pixel_Size(Vector2);
+    void setPixelSize(Vector2);
 };
 
