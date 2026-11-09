@@ -37,13 +37,13 @@ public:
 
     Game_State game_state = playing;
 
-    void Game_Loop();
+    void GameLoop();
 
-    void change_map(Map new_map);
+    void changeMap(Map new_map);
     
-    Map get_map();
+    Map getMap();
     
     vector<Entity*> getEntities();
 
-    vector<Player*> get_players();
+    vector<Player*> getPlayers();
 };

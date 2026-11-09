@@ -49,7 +49,7 @@ vector<Tile_type> Parser::loadMap(string file_path, Vector2 Screen_Size){
 }
 
 // Biggest brain on earth
-vector<Entity*> Parser::Load_Entity(Vector2 level_pos){
+vector<Entity*> Parser::loadEntity(Vector2 level_pos){
     ifstream inputFile("entity" + to_string(level_pos.x) + to_string(level_pos.y) + ".txt");
 
     string line;

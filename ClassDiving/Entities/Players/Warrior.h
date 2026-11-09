@@ -1,5 +1,4 @@
 #pragma once
-
 #include "../Entity.h"
 #include "Player.h"
 #include "../../Game/Game.h"
@@ -37,7 +36,7 @@ protected:
 public:
     using Player::Player;
 
-    void update() {
+    void update() override{
         FSM();
     }
 

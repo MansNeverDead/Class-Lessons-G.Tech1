@@ -13,7 +13,7 @@ void Entity::changePosition(Vector2 newPosition) {
 }
 
 bool Entity::CheckTile(Vector2 pos){
-	Tile_type tile = Game::getInstance().get_map().getTile(pos);
+	Tile_type tile = Game::getInstance().getMap().getTile(pos);
 	for (int i = 0; i < walkableTile.size(); i++) {
 		if (walkableTile[i] == tile){
 			return true;
@@ -22,7 +22,7 @@ bool Entity::CheckTile(Vector2 pos){
 	return false;
 }
 
-bool Entity::TryToMove(Vector2 dir){
+bool Entity::tryToMove(Vector2 dir){
 	Vector2 new_pos = position + dir;
 
 	if (CheckTile(new_pos)){
@@ -56,7 +56,7 @@ void Entity::receiveDamage(int value) {
 }
 
 void Entity::move(){
-	while (!TryToMove(chooseDirection()));
+	while (!tryToMove(chooseDirection()));
 }
 
 int Entity::getHP() {

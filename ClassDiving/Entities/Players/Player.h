@@ -1,6 +1,5 @@
 #pragma once
-
-//#include <conio.h>
+#include <conio.h>
 #include "../Entity.h"
 #include "../../Map/Map.h"
 
@@ -14,9 +13,7 @@ protected:
     virtual void attackingEnemies();
 
     char verifyInput() {
-        //char c = _getch();
-        char c;
-        cin >> c;
+        char c = _getch();
         if (c == 'z' || c == 'q' || c == 's' || c == 'd' || c == 'a') {
             return c;
         }
@@ -58,7 +55,7 @@ public:
     // this is when you initialise them at the start
     Player(int hp, int attackValue, char displayValue);
     
-    void update() override {
+    virtual void update() override {
         FSM();
     };
 };

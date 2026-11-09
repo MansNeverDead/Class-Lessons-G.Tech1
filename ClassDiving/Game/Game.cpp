@@ -1,16 +1,14 @@
 #include <string>
-#include <termios.h>
 
 #include "Game.h"
 #include "../Utilities/Buffer.h"
-#include "../Entities/Players/Palandin.h"
 
 Game& Game::getInstance() {
     static Game obj;
     return obj;
 }
 
-void Game::Game_Loop(){
+void Game::GameLoop(){
     Init();
     while (game_state != quit) {
         switch (game_state) {
@@ -38,7 +36,7 @@ void Game::Update(){
 }
 
 void Game::Draw(){
-    map.Draw_Map();
+    map.drawMap();
 
     for (int i = 0; i < entityList.size(); i++) {
         entityList[i] -> draw();
@@ -65,7 +63,7 @@ void Game::Menu(string big_display, string instruction){
 }
 
 void Game::Init(){
-    players[0] = new Paladin;
+    players[0] = new Warrior(1, 1, 'W');
 
     map = *new Map;
 
@@ -73,14 +71,14 @@ void Game::Init(){
 
     map.set_Pixel_Size({2, 2});
 
-    map.Load_Map("Level1");
+    map.loadMap("Level1");
 }
 
-void Game::change_map(Map new_map){
+void Game::changeMap(Map new_map){
     Game::getInstance().map = new_map;
 }
     
-Map Game::get_map(){
+Map Game::getMap(){
     return Game::getInstance().map;
 }
     
