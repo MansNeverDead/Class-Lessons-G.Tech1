@@ -81,6 +81,10 @@ public:
 		while (!TryToMove(chooseDirection()));
 	}
 
+	void setPos(Vector2 newPos){
+		position = newPos;
+	}
+
 	int getHP() {
 		return HP;
 	}

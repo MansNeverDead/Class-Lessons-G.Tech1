@@ -24,5 +24,13 @@ public:
     void Load_Map(string file_path);
 
     void Draw_Map();
+
+    Vector2 get_Screen_Size();
+
+    Vector2 get_Pixel_Size();
+
+    void set_Screen_Size(Vector2);
+
+    void set_Pixel_Size(Vector2);
 };
 

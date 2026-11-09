@@ -68,6 +68,10 @@ void Game::Init(){
 
     map = *new Map;
 
+    map.set_Screen_Size({22, 22});
+
+    map.set_Pixel_Size({2, 2});
+
     map.Load_Map("Level1");
 }
 
