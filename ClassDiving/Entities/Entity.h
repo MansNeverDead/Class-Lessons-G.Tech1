@@ -30,7 +30,7 @@ protected:
 
     virtual void CheckCollisions();
 
-	bool TryToMove(Vector2 dir);
+	bool tryToMove(Vector2 dir);
 
 	void changeHP(int value);
 

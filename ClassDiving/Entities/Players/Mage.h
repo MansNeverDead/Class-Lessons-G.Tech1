@@ -1,6 +1,6 @@
-#include "Entity.h"
+#include "../Entity.h"
 #include "Player.h"
-#include "Game.h"
+#include "../../Game/Game.h"
 
 using namespace std;
 

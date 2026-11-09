@@ -1,7 +1,8 @@
-#include "Entity.h"
+#pragma once
+#include "../Entity.h"
 #include "Player.h"
-#include "Game.h"
-#include "Zombie.h"
+#include "../../Game/Game.h"
+#include "../Monsters/Zombie.h"
 
 
 using namespace std;
@@ -35,7 +36,7 @@ protected:
 public:
     using Player::Player;
 
-    void update() {
+    void update() override{
         FSM();
     }
 

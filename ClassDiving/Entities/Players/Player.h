@@ -1,3 +1,4 @@
+#pragma once
 #include <conio.h>
 #include "../Entity.h"
 #include "../../Map/Map.h"
@@ -54,7 +55,7 @@ public:
     // this is when you initialise them at the start
     Player(int hp, int attackValue, char displayValue);
     
-    void update() override {
+    virtual void update() override {
         FSM();
     };
 };

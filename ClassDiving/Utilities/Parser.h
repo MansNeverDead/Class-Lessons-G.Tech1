@@ -12,7 +12,7 @@ private:
     static string Get_word(string phrase, int position);
 
 public:
-    static vector<Entity*> Load_Entity(Vector2 level_pos);
+    static vector<Entity*> loadEntity(Vector2 level_pos);
 
     static vector<Tile_type> loadMap(string file_path, Vector2 Screen_Size);
 };
