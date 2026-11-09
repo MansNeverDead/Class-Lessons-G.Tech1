@@ -20,7 +20,7 @@ protected:
 
 	int HP = 0;
 
-	const int ID = 0;
+	const int ID = rand();
 
 	void changePosition(Vector2 newPosition);
 
@@ -53,4 +53,6 @@ public:
 	int getAttack();
 	
 	Vector2 getPosition();
+	
+	void setPos(Vector2 value);
 };
