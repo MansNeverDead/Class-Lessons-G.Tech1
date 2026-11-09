@@ -1,3 +1,5 @@
+#pragma once
+
 #include "../Entity.h"
 #include "Player.h"
 #include "../../Game/Game.h"
@@ -20,7 +22,6 @@ protected:
                 }
             }
         }
-
     };
 
     void mouvement() {

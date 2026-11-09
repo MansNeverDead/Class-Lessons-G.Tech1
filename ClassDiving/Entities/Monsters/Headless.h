@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../Entity.h"
+#include "Enemie.h"
 
-class Headless: public Entity {
+class Headless: public Enemie {
 private:
 
     Vector2 chooseDirection() override;

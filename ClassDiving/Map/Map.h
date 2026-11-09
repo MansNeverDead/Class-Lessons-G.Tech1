@@ -25,12 +25,12 @@ public:
 
     void drawMap();
 
-    Vector2 get_Screen_Size();
+    Vector2 getScreenSize();
 
-    Vector2 get_Pixel_Size();
+    Vector2 getPixelSize();
 
-    void set_Screen_Size(Vector2);
+    void setScreenSize(Vector2);
 
-    void set_Pixel_Size(Vector2);
+    void setPixelSize(Vector2);
 };
 
