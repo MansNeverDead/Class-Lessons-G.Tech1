@@ -1,6 +1,7 @@
 #include <string>
 
 #include "Game.h"
+#include "../Entities/Players/Warrior.h"
 #include "../Utilities/Buffer.h"
 
 Game& Game::getInstance() {
