@@ -31,6 +31,10 @@ void Game::GameLoop(){
 }
 
 void Game::Update(){
+    for (int i = 0; i < players.size(); i++) {
+        players[i] -> update();
+    }
+
     for (int i = 0; i < entityList.size(); i++) {
         entityList[i] -> update();
     }
@@ -41,7 +45,11 @@ void Game::Draw(){
 
     for (int i = 0; i < entityList.size(); i++) {
         entityList[i] -> draw();
-    }
+    };
+    
+    for (int i = 0; i < players.size(); i++) {
+        players[i] -> draw();
+    };
 
     Buffer::getInstance().print();
 }
