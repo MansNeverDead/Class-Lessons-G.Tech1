@@ -1,9 +1,8 @@
 #include <string>
-#include <termios.h>
 
 #include "Game.h"
 #include "../Utilities/Buffer.h"
-#include "../Entities/Players/Palandin.h"
+#include "../Entities/Players/Warrior.h"
 
 Game& Game::getInstance() {
     static Game obj;
@@ -65,7 +64,7 @@ void Game::Menu(string big_display, string instruction){
 }
 
 void Game::Init(){
-    players[0] = new Paladin;
+    players[0] = new Warrior(0, 0, 'W');
 
     map = *new Map;
 
@@ -86,4 +85,9 @@ Map Game::getMap(){
     
 vector<Entity*> Game::getEntities(){
     return entityList;
+}
+
+
+vector<Player*> Game::getPlayers() {
+    return players;
 }

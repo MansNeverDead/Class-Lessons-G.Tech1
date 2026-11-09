@@ -5,7 +5,8 @@
 
 class SwimmerZombie : public Zombie, public Swimmer {
 public:
-    SwimmerZombie(){
+    /*SwimmerZombie(){
         walkableTile = get_walkable_tiles();
-    }
+    }*/
+    using Zombie::Zombie;
 };

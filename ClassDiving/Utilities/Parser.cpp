@@ -50,7 +50,7 @@ vector<Tile_type> Parser::loadMap(string file_path, Vector2 Screen_Size){
 }
 
 // Biggest brain on earth
-vector<Entity*> Parser::loadEntity(Vector2 level_pos){
+void Parser::loadEntity(Vector2 level_pos){
     ifstream inputFile("entity" + to_string(level_pos.x) + to_string(level_pos.y) + ".txt");
 
     string line;
@@ -62,7 +62,7 @@ vector<Entity*> Parser::loadEntity(Vector2 level_pos){
         type = Get_word(line, 1);
 
         if (type == "Headless"){
-            Headless* headless = new Headless;
+            Headless* headless = new Headless(2, 1, 'R');
 
             Vector2 newPos = 
             {stoi(Get_word(line, 2)),
@@ -74,7 +74,7 @@ vector<Entity*> Parser::loadEntity(Vector2 level_pos){
         }
 
         else if (type == "Zombie"){
-            Zombie* zombie = new Zombie;
+            Zombie* zombie = new Zombie(1, 1, 'X');
 
             Vector2 newPos = 
             {stoi(Get_word(line, 2)),
@@ -86,7 +86,7 @@ vector<Entity*> Parser::loadEntity(Vector2 level_pos){
         }
 
         else if (type == "Swimmer"){
-            SwimmerZombie* swimmer = new SwimmerZombie;
+            SwimmerZombie* swimmer = new SwimmerZombie(1, 1, 'B');
 
             Vector2 newPos = 
             {stoi(Get_word(line, 2)),
@@ -96,10 +96,10 @@ vector<Entity*> Parser::loadEntity(Vector2 level_pos){
 
             Game::getInstance().getEntities().push_back(swimmer);
         }
-    }
+    };
 
     inputFile.close();
-}
+};
 
 // Simply genious
 string Parser::Get_word(string phrase, int position){
@@ -120,7 +120,7 @@ string Parser::Get_word(string phrase, int position){
         else {
             word += phrase[i];
         }
-    }
+    };
     
     return word;
 }

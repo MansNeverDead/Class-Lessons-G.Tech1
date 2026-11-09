@@ -6,7 +6,7 @@
 int main() {
     Game& s1 = Game::getInstance();
     cout << "Adress: " << &s1 << endl;
-    s1.Game_Loop();
+    s1.GameLoop();
 
     return 0;
 }

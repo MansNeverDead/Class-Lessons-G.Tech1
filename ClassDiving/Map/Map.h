@@ -12,9 +12,9 @@ class Map{
 private:
     static Tile_type* map;
 
-    static Vector2 Screen_Size;
+    static Vector2 screenSize;
 
-    static Vector2 Pixel_Size;
+    static Vector2 pixelSize;
 
 public:
     Tile_type getTile(Vector2 pos);

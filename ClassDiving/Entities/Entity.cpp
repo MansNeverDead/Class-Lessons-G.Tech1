@@ -74,3 +74,17 @@ int Entity::getAttack() {
 void Entity::setPos(Vector2 value){
     position = value;
 }
+
+Vector2 Entity::getPosition() {
+	return position;
+}
+
+void Entity::CheckCollisions() {}
+
+Entity::Entity(int x, int y, char displayValue)
+    : position{ x, y }, display(displayValue) {} 
+
+void Entity::die() {
+	return;
+}
+	

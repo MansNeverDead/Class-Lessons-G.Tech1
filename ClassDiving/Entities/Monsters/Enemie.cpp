@@ -24,3 +24,6 @@ void Enemie::CheckCollisions(){
         }
     }
 }
+
+Enemie::Enemie(int x, int y, char displayValue)
+    : Entity(x, y, displayValue) {} 

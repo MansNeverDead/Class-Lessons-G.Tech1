@@ -9,35 +9,15 @@ using namespace std;
 
 class Warrior: public Player {
 protected:
-    void CheckCollisions() override {
-        for (int i = 0; i < Game::getInstance().getEntities().size(); i++) {
-            Entity* monster = Game::getInstance().getEntities()[i];
-            if (position == monster->getPosition()) {
-                monster->receiveDamage(attack);
-            }
-        }
-    };
+    void CheckCollisions() override;
     
-    void mouvement() {
-        Vector2 tempMouvement = position + chooseDirection();
-        Map* e = new Map();
-        if (!tryToMove(chooseDirection())) {
-            return;
-        } else {
-            position = tempMouvement;
-        }
-    }
+    void mouvement();
 
-    void FSM() override {
-        mouvement();
-        CheckCollisions();
-    }
+    void FSM() override;
 
 public:
     using Player::Player;
 
-    void update() override{
-        FSM();
-    }
+    void update() override;
 
 };

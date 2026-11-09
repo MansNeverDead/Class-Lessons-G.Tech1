@@ -22,7 +22,7 @@ protected:
 
 	void changePosition(Vector2 newPosition);
 
-	virtual Vector2 chooseDirection();
+	virtual Vector2 chooseDirection() = 0;
 
 	bool CheckTile(Vector2 pos);
 
@@ -32,8 +32,8 @@ protected:
 
 	void changeHP(int value);
 
+	Entity(int hp, int attackValue, char displayValue);
 public:
-
 	void draw();
 
 	virtual void update();
