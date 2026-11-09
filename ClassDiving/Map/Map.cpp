@@ -64,10 +64,10 @@ Vector2 Map::get_Pixel_Size(){
     return Pixel_Size;
 }
 
-void Map::set_Screen_Size(){
-
+void Map::set_Screen_Size(Vector2 value){
+    Screen_Size = value;
 }
 
-void Map::set_Pixel_Size(){
-    
+void Map::set_Pixel_Size(Vector2 value){
+    Pixel_Size = value;
 }

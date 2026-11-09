@@ -1,4 +1,6 @@
 #include <string>
+#include <termios.h>
+
 #include "Game.h"
 #include "../Utilities/Buffer.h"
 
@@ -35,7 +37,7 @@ void Game::Update(){
 }
 
 void Game::Draw(){
-    map.drawMap();
+    map.Draw_Map();
 
     for (int i = 0; i < entityList.size(); i++) {
         entityList[i] -> draw();
@@ -62,11 +64,15 @@ void Game::Menu(string big_display, string instruction){
 }
 
 void Game::Init(){
-    players[0] = new Warrior(1,1,'W');
+    players[0] = new Player;
 
     map = *new Map;
 
-    map.loadMap("Level1");
+    map.set_Screen_Size({22, 22});
+
+    map.set_Pixel_Size({2, 2});
+
+    map.Load_Map("Level1");
 }
 
 void Game::change_map(Map new_map){
@@ -77,6 +83,6 @@ Map Game::get_map(){
     return Game::getInstance().map;
 }
     
-vector<Entity*> Game::getEntities(){
+vector<Entity*> Game::get_entities(){
     return entityList;
 }

@@ -17,12 +17,20 @@ private:
     static Vector2 Pixel_Size;
 
 public:
-    Tile_type getTile(Vector2 pos);
+    Tile_type get_tile(Vector2 pos);
 
-    int coordinatesToIndex(Vector2 coordinates);
+    int coordinates_to_index(Vector2 coordinates);
 
-    void loadMap(string file_path);
+    void Load_Map(string file_path);
 
-    void drawMap();
+    void Draw_Map();
+
+    Vector2 get_Screen_Size();
+
+    Vector2 get_Pixel_Size();
+
+    void set_Screen_Size(Vector2);
+
+    void set_Pixel_Size(Vector2);
 };
 
