@@ -70,3 +70,7 @@ int Entity::getID() {
 int Entity::getAttack() {
 	return attack;
 };
+
+void Entity::setPos(Vector2 value){
+    position = value;
+}

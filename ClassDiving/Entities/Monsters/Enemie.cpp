@@ -7,7 +7,7 @@
 using namespace std;
 
 void Enemie::die() {
-    vector<Entity*> entitys = Game::getInstance().get_entities();
+    vector<Entity*> entitys = Game::getInstance().getEntities();
     entitys.erase(
     remove_if(entitys.begin(), entitys.end(), [&](Entity* const & monster) {
         return monster -> getID() == ID;

@@ -3,6 +3,7 @@
 
 #include "Game.h"
 #include "../Utilities/Buffer.h"
+#include "../Entities/Players/Palandin.h"
 
 Game& Game::getInstance() {
     static Game obj;
@@ -64,7 +65,7 @@ void Game::Menu(string big_display, string instruction){
 }
 
 void Game::Init(){
-    players[0] = new Player;
+    players[0] = new Paladin;
 
     map = *new Map;
 
@@ -83,6 +84,6 @@ Map Game::get_map(){
     return Game::getInstance().map;
 }
     
-vector<Entity*> Game::get_entities(){
+vector<Entity*> Game::getEntities(){
     return entityList;
 }

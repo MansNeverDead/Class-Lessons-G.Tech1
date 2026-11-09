@@ -1,4 +1,6 @@
-#include "Entity.h"
+#pragma once
+
+#include "../Entity.h"
 #include "Player.h"
 #include "Game.h"
 #include "Zombie.h"

@@ -1,4 +1,6 @@
-#include <conio.h>
+#pragma once
+
+//#include <conio.h>
 #include "../Entity.h"
 #include "../../Map/Map.h"
 
@@ -12,7 +14,9 @@ protected:
     virtual void attackingEnemies();
 
     char verifyInput() {
-        char c = _getch();
+        //char c = _getch();
+        char c;
+        cin >> c;
         if (c == 'z' || c == 'q' || c == 's' || c == 'd' || c == 'a') {
             return c;
         }

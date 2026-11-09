@@ -17,7 +17,7 @@ private:
     static Vector2 Pixel_Size;
 
 public:
-    Tile_type get_tile(Vector2 pos);
+    Tile_type getTile(Vector2 pos);
 
     int coordinates_to_index(Vector2 coordinates);
 
