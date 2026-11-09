@@ -1,12 +1,12 @@
-#include <iostream>
+#include <string>
+#include <termios.h>
 
 #include "Game.h"
-
-using namespace std;
+#include "../Utilities/Buffer.h"
 
 Game& Game::getInstance() {
-    static Game instance;
-    return instance;
+    static Game obj;
+    return obj;
 }
 
 void Game::Game_Loop(){
@@ -21,7 +21,7 @@ void Game::Game_Loop(){
                 Menu("PAUSE", "Press c to Continue /nPress q to Quit");
                 break;
             case game_over:
-                Menu("PAUSE", "Press c to Continue /nPress q to Quit");
+                Menu("GAME OVER", "Press c to Restart /nPress q to Quit");
                 Init();
                 break;
             default:
@@ -32,7 +32,7 @@ void Game::Game_Loop(){
 
 void Game::Update(){
     for (int i = 0; i < entityList.size(); i++) {
-        entityList[i]->update();
+        entityList[i] -> update();
     }
 }
 
@@ -40,16 +40,35 @@ void Game::Draw(){
     map.Draw_Map();
 
     for (int i = 0; i < entityList.size(); i++) {
-        entityList[i]->draw();
+        entityList[i] -> draw();
     }
+
+    Buffer::getInstance().print();
 }
 
 void Game::Menu(string big_display, string instruction){
-
+    Buffer::getInstance().clear();
+    cout << big_display;
+    string input = "";
+    while (true) {
+        cin >> input;
+        if (input == "c"){
+            game_state = playing;
+            return;
+        }
+        if (input == "q"){
+            game_state = quit;
+            return;
+        }
+    }
 }
 
 void Game::Init(){
+    players[0] = new Player;
 
+    map = *new Map;
+
+    map.Load_Map("Level1");
 }
 
 void Game::change_map(Map new_map){
@@ -60,10 +79,6 @@ Map Game::get_map(){
     return Game::getInstance().map;
 }
     
-vector<Entity*> Game::getEntities(){
+vector<Entity*> Game::get_entities(){
     return entityList;
-}
-
-void remove_dead_entities(){
-
 }
