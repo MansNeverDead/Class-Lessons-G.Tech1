@@ -5,7 +5,7 @@
 #include "Parser.h"
 #include "Vector2.h"
 
-vector<Tile_type> Parser::Load_Map(string file_path, Vector2 Screen_Size){
+vector<Tile_type> Parser::loadMap(string file_path, Vector2 Screen_Size){
 
     vector<Tile_type> map;
 
@@ -14,7 +14,7 @@ vector<Tile_type> Parser::Load_Map(string file_path, Vector2 Screen_Size){
     string line;
 
     int y = 0;
-
+    
     Tile_type tile;
 
     while (getline(inputFile, line) && y < Screen_Size.y) {

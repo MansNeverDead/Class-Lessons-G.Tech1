@@ -14,6 +14,6 @@ private:
 public:
     static vector<Entity*> Load_Entity(Vector2 level_pos);
 
-    static vector<Tile_type> Load_Map(string file_path, Vector2 Screen_Size);
+    static vector<Tile_type> loadMap(string file_path, Vector2 Screen_Size);
 };
 

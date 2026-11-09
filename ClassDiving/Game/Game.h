@@ -5,6 +5,8 @@
 
 #include "../Utilities/Vector2.h"
 #include "../Entities/Entity.h"
+#include "../Entities/Players/Warrior.h"
+#include "../Entities/Players/Mage.h"
 #include "../Entities/Players/Player.h"
 #include "../Map/Map.h"
 

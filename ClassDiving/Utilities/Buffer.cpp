@@ -11,5 +11,5 @@ void Buffer::clear(){
 }
     
 void Buffer::draw(char c, Vector2 coordinates){
-    Buffer::getInstance().buffer[Game::getInstance().get_map().coordinates_to_index(coordinates)] = c;
+    Buffer::getInstance().buffer[Game::getInstance().get_map().coordinatesToIndex(coordinates)] = c;
 }

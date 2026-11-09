@@ -13,7 +13,7 @@ void Entity::changePosition(Vector2 newPosition) {
 }
 
 bool Entity::CheckTile(Vector2 pos){
-	Tile_type tile = Game::getInstance().get_map().get_tile(pos);
+	Tile_type tile = Game::getInstance().get_map().getTile(pos);
 	for (int i = 0; i < walkableTile.size(); i++) {
 		if (walkableTile[i] == tile){
 			return true;
