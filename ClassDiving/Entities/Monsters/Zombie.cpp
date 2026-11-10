@@ -1,3 +1,5 @@
+// Made by Arnaud 
+
 #include <algorithm>
 #include <cstdlib>
 #include <math.h>
@@ -13,7 +15,7 @@ Vector2 Zombie::chooseDirection(){
 
     dir = position - Game::getInstance().getPlayers()[1]->getPosition();
     distance = {abs(dir.x), abs(dir.y)};
-    //dir = {clamp(dir.x, -1, 1), clamp(dir.y, -1, 1)};
+    dir = {clamp(dir.x, -1, 1), clamp(dir.y, -1, 1)};
 
     if (distance.x >= distance.y){
         dir.y = 0;

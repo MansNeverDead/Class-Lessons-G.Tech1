@@ -1,3 +1,5 @@
+// Made by Arnaud 
+
 #include "Vector2.h"
 
 bool operator==(const Vector2 vectorA, const Vector2 vectorB) {
